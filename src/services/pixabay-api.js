@@ -25,7 +25,7 @@ const state = {
   query: null,
 };
 
-const fetch = async (query, page = 1) => {
+const fetch = async (query = 'cat', page = 1) => {
   state.page = page;
 
   const params = {
