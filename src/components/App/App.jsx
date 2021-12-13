@@ -24,7 +24,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    const promiseCallback = () => pixabay.fetch('');
+    const promiseCallback = () => pixabay.fetch('cat');
     const thenCallback = images => this.setState({ images, view: View.NORMAL });
 
     this.handleLoading(promiseCallback, thenCallback);

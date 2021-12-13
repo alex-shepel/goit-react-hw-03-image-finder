@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { nanoid } from 'nanoid';
 
-const BASE_URL = 'https://pixabay.com';
-const RESOURCE = 'api';
+const BASE_URL = 'https://pixabay.com/api';
 
 const PARAMS = {
   key: '24268385-a09efe65560efa0dec086fa93',
@@ -26,13 +25,6 @@ const state = {
   query: null,
 };
 
-const axiosInstance = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    Accept: 'application/json',
-  },
-});
-
 const fetch = async (query, page = 1) => {
   state.page = page;
 
@@ -42,7 +34,7 @@ const fetch = async (query, page = 1) => {
     ...PARAMS,
   };
 
-  const { data } = await axiosInstance(RESOURCE, {
+  const { data } = await axios.get(BASE_URL, {
     params,
   });
   const filteredData = filterResponseData(data);
