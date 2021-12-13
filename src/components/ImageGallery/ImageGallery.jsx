@@ -1,9 +1,28 @@
 import PropTypes from 'prop-types';
+import ImageGalleryItem from './ImageGalleryItem';
+import s from './ImageGallery.module.css';
 
-const ImageGallery = props => {
-  return <div>ImageGallery</div>;
+function ImageGallery({ onItemClick, images }) {
+  return (
+    <ul className={s.gallery}>
+      {images.map(({ id, webformatURL }) => (
+        <ImageGalleryItem
+          onClick={() => onItemClick(id)}
+          key={id}
+          url={webformatURL}
+        />
+      ))}
+    </ul>
+  );
+}
+
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
-
-ImageGallery.propTypes = {};
 
 export default ImageGallery;
